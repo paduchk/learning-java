@@ -48,12 +48,40 @@ public class CustomerEditor extends VerticalLayout {
 		
 		save.addClickListener(e -> repository.save(customer));
 		delete.addClickListener(e -> repository.delete(customer));
+		cancel.addClickListener(e-> editCustomer(customer));
 		setVisible(false);				
 	}
 	public interface ChangeHandler {
 		void onChange();
 	}
 	
+	public final void editCustomer(Customer c) {
+		if (c == null) {
+			setVisible(false);
+			return;
+		}
+		
+		final boolean persisted = c.getId() != null;
+		if (persisted) {
+			customer = repository.findOne(c.getId());
+		}
+		else {
+			customer = c;
+		}
+		cancel.setVisible(persisted);
+		
+		binder.setBean(customer);
+		
+		setVisible(true);
+		
+		save.focus();
+		
+		firstName.selectAll();		
+	}
 	
+	public void setChangeHandler(ChangeHandler h) {
+		save.addClickListener(e-> h.onChange());
+		delete.addClickListener(e-> h.onChange());
+	}
 	
 }

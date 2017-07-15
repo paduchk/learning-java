@@ -1,2 +1,5 @@
 http://vaadin.github.io/spring-tutorial/
 vaadin and spring boot section
+
+about #! (shebang) in vaadin url
+https://stackoverflow.com/questions/23346204/how-to-manage-uri-in-vaadin-with-the-navigator

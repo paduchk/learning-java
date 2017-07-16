@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * {@link CustomerService#getInstance()}.
  */
 public class CustomerService {
-
+ 
 	private static CustomerService instance;
 	private static final Logger LOGGER = Logger.getLogger(CustomerService.class.getName());
 
